@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const rootElem = document.querySelector("#root")
+
+        function ItemList(){
+            let stationary = [
+                { id: 1, name: "Pen" },
+                { id: 2, name: "Pencil" },
+                { id: 3, name: "Eraser" },
+                { id: 4, name: "Ruler" },
+            ];
+
+            let list2 = [
+                { id: 1, name: "Hello" },
+                { id: 2, name: "Hi" },
+                { id: 3, name: "bi" },
+            ];
+            return(
+                <div>
+                    <p>ItemList</p>
+                <ul>                    
+                    {list2.map((list)=>(
+                        <li key = {list.id}>
+                            {list.name}
+                            {console.log(list.id)}
+
+                        </li>
+                    ))}
+                </ul>
+                </div>
+                
+            )
+        }
+        ReactDOM.render(<ItemList/>, rootElem)
+    </script>
+</body>
+</html>

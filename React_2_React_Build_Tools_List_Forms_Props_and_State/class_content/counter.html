@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="root"></div>
+    <script crossorigin src="https://unpkg.com/react@18/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@18/umd/react-dom.development.js"></script>
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+    <script type="text/babel">
+        const rootElem = document.querySelector('#root')
+        
+        function Counter({defaultValue}){
+            
+            const [count, setCount] = React.useState(defaultValue)
+            const [value, setValue] = React.useState("")
+            const handleIncreaseCount = ()=>{
+               setCount(count+1)
+            }
+            const handleDecreaseCount = ()=>{
+                setCount(count-1)
+            }
+            const handleChange=(e)=>{
+                setValue(e.target.value)
+            }
+            const handleSet = ()=>{
+                setCount(parseInt(value))
+            }  
+            return(
+                <div>
+                    <div>
+                    <input onChange={handleChange} type="number" name="number" id="" value={value}></input>
+                    <button onClick={handleSet}>set</button>
+                    </div>
+                    <button onClick={handleIncreaseCount}>+</button>
+                    <p>Count - {count}</p>
+                    <button onClick = {handleDecreaseCount}>-</button>
+                
+                </div>
+                
+            )
+        }
+
+        function ParentCounter(){          
+            return(
+                <div>                
+                <Counter defaultValue = {125}/> 
+                <Counter defaultValue = {250}/>
+                <Counter defaultValue = {10}/>               
+                </div>
+            )
+        }
+
+        ReactDOM.render(<ParentCounter />, rootElem)
+    </script>
+</body>
+</html>
